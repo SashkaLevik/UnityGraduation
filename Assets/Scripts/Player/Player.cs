@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource _bottomHitSound;
     [SerializeField] private AudioSource _playerHit;
     [SerializeField] private UpgradeScreen _upgradeScreen;
+    [SerializeField] private PlayerStats _playerStats;
 
     //private int _essence;
     private int _currentHealth;
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
     private int _currentDefencePower;
     private bool _isDefending = false;
 
-    //public int Essence => _essence;
+    public int CurrentHealth => _currentHealth;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -69,17 +70,17 @@ public class Player : MonoBehaviour
     //    _currentDefencePower = _defencePower;
     //}
 
-    public void AddEssence(int essence)
-    {
-        _upgradeScreen.PlayerStats.Essence += essence;
-        EssenceChanged?.Invoke(_upgradeScreen.PlayerStats.Essence);
-    }
+    //public void AddEssence(int essence)
+    //{
+    //    _upgradeScreen.PlayerStats.Essence += essence;
+    //    EssenceChanged?.Invoke(_upgradeScreen.PlayerStats.Essence);
+    //}
 
-    public void RemoveEssence(int essence)
-    {
-        _upgradeScreen.PlayerStats.Essence -= essence;
-        EssenceChanged?.Invoke(_upgradeScreen.PlayerStats.Essence);
-    }
+    //public void RemoveEssence(int essence)
+    //{
+    //    _upgradeScreen.PlayerStats.Essence -= essence;
+    //    EssenceChanged?.Invoke(_upgradeScreen.PlayerStats.Essence);
+    //}
 
     public void TakeDamage(int damage)
     {
@@ -162,7 +163,7 @@ public class Player : MonoBehaviour
 
         for (int i = 0; i < hitEnemyes.Length; i++)
         {
-            hitEnemyes[i].GetComponent<Enemy>().TakeDamage(_upgradeScreen.PlayerStats.Damage);
+            hitEnemyes[i].GetComponent<Enemy>().TakeDamage(_playerStats.Damage);
         }
     }
     private void OnTopAttacked()

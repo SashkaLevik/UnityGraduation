@@ -1004,6 +1004,7 @@ MonoBehaviour:
   _bottomHitSound: {fileID: 419626666}
   _playerHit: {fileID: 419626665}
   _upgradeScreen: {fileID: 800024816}
+  _playerStats: {fileID: 11400000, guid: 8beee2eceb244d947a2b643900300979, type: 2}
 --- !u!50 &419626657
 Rigidbody2D:
   serializedVersion: 4
@@ -1664,7 +1665,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469068991}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a712349a0fb95c84ea014a0d2d0125b7, type: 3}
   m_Name: 
@@ -1680,6 +1681,7 @@ MonoBehaviour:
     _delay: 2
   _spawnPoint: {fileID: 469068992}
   _player: {fileID: 419626656}
+  _upgradeScreen: {fileID: 800024816}
 --- !u!1 &497652406
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,6 +3178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 419626656}
   _essenceScore: {fileID: 1273760328}
+  _upgradeScreen: {fileID: 800024816}
+  _playerStats: {fileID: 11400000, guid: 8beee2eceb244d947a2b643900300979, type: 2}
 --- !u!224 &885269502
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3325,6 +3329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slider: {fileID: 1027563512}
   _player: {fileID: 419626656}
+  _upgradeScreen: {fileID: 0}
 --- !u!114 &1027563512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4761,6 +4766,7 @@ MonoBehaviour:
     _delay: 2
   _spawnPoint: {fileID: 1942907964}
   _player: {fileID: 419626656}
+  _upgradeScreen: {fileID: 800024816}
 --- !u!1 &2094115243
 GameObject:
   m_ObjectHideFlags: 0

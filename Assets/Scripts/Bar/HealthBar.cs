@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthBar : Bar
 {
     [SerializeField] private Player _player;
+    [SerializeField] private UpgradeScreen _upgradeScreen;
 
     private void OnEnable()
     {

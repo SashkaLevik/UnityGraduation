@@ -15,6 +15,8 @@ public class UpgradeScreen : Panel
 
     public PlayerStats PlayerStats => _playerStats;
 
+    public event UnityAction<int> EssenceChanged;
+
     private event UnityAction UpgradeButtonClick;
 
     private void OnEnable()
@@ -34,12 +36,18 @@ public class UpgradeScreen : Panel
         if (_playerStats.Essence >= 1)
         {
             _playerStats.Essence -= firstUpgradeCost;
-            _player.EssenceChanged += _player.RemoveEssence;
+            EssenceChanged?.Invoke(_playerStats.Essence);
             _playerStats.Health += 5;
-            //HealthChanged?.Invoke(_health, _currentHealth);
+            //HealthChanged?.Invoke(_playerStats.Health, _player.CurrentHealth);
             _playerStats.DefencePower += 2;
             //DefencePowerChanged?.Invoke(_defencePower, _currentDefencePower);
         }
+    }
+
+    public void AddEssence(int essence)
+    {
+        _playerStats.Essence += essence;
+        EssenceChanged?.Invoke(_playerStats.Essence);
     }
 
     public override void Open(GameObject panel)

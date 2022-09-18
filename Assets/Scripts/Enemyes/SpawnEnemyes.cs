@@ -7,6 +7,7 @@ public class SpawnEnemyes : MonoBehaviour
     [SerializeField] private List<Wave> _waves;    
     [SerializeField] private Transform _spawnPoint;    
     [SerializeField] private Player _player;
+    [SerializeField] private UpgradeScreen _upgradeScreen;
     
 
     private Wave _currentWave;
@@ -88,7 +89,7 @@ public class SpawnEnemyes : MonoBehaviour
     private void OnEnemyDying(Enemy enemy)
     {
         enemy.Dying -= OnEnemyDying;
-        _player.AddEssence(enemy.Reward);
+        _upgradeScreen.AddEssence(enemy.Reward);
     }
 }
 

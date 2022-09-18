@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "PlayerStats", menuName ="PlayerStats")]
 public class PlayerStats : ScriptableObject
@@ -9,8 +10,8 @@ public class PlayerStats : ScriptableObject
     [SerializeField] private int _damage;
     [SerializeField] private int _defence;
     [SerializeField] private int _defencePower;
-
-    private int _essence;
+    [SerializeField] private int _essence;
+    
     public int Damage => _damage;
     public int Defence => _defence;
     public int DefencePower
@@ -40,10 +41,10 @@ public class PlayerStats : ScriptableObject
         get => _essence;
         set
         {
-            if (value > 0)
+            if (value >= 0)
             {
                 _essence = value;
             }
         }
-    }
+    }    
 }
