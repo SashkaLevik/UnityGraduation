@@ -8,8 +8,8 @@ public class SpawnEnemyes : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;    
     [SerializeField] private Player _player;
     [SerializeField] private UpgradeScreen _upgradeScreen;
+    [SerializeField] private GameScreen _gameScreen;
     
-
     private Wave _currentWave;
     private int _currentWaveNumber;
     private int _spawned;
@@ -17,7 +17,7 @@ public class SpawnEnemyes : MonoBehaviour
 
     private void Start()
     {
-        SetWave(_currentWaveNumber);
+        SetWave(_currentWaveNumber);        
     }
 
     private void Update()
@@ -27,9 +27,9 @@ public class SpawnEnemyes : MonoBehaviour
 
         _timeAfterLastSpawn += Time.deltaTime;
 
-        if (_timeAfterLastSpawn >= _currentWave.Delay)
+        if (_timeAfterLastSpawn >= _currentWave.CurrentDelay)
         {
-            InstantieteEnemy();
+            Spawn();
             _spawned++;
             _timeAfterLastSpawn = 0;
         }
@@ -40,6 +40,18 @@ public class SpawnEnemyes : MonoBehaviour
     public void SetWave(int waweIndex)
     {
         _currentWave = _waves[waweIndex];
+
+        foreach (var wave in _waves)
+        {
+            wave.CurrentDelay = _currentWave.Delay;
+        }
+    }
+
+    public void ResetWaves()
+    {        
+        _currentWaveNumber = 0;
+        _spawned = 0;
+        SetWave(_currentWaveNumber);
     }
 
     private void NextWave()
@@ -67,9 +79,9 @@ public class SpawnEnemyes : MonoBehaviour
 
             foreach (var wave in _waves)
             {
-                if (wave.Delay > 1)
+                if (wave.CurrentDelay >= 1)
                 {
-                    wave.Delay--;
+                    wave.CurrentDelay--;
                 }
                 else
                     _currentWave = null;
@@ -77,12 +89,11 @@ public class SpawnEnemyes : MonoBehaviour
         }        
     }
 
-    private void InstantieteEnemy()
+    private void Spawn()
     {
         GameObject tamplate = _currentWave.Tamplate[Random.Range(0, _currentWave.Tamplate.Length)];
         Enemy enemy = Instantiate(tamplate, _spawnPoint.position, _spawnPoint.rotation, _spawnPoint).GetComponent<Enemy>();
         enemy.Init(_player);
-
         enemy.Dying += OnEnemyDying;
     }
 
@@ -90,7 +101,8 @@ public class SpawnEnemyes : MonoBehaviour
     {
         enemy.Dying -= OnEnemyDying;
         _upgradeScreen.AddEssence(enemy.Reward);
-    }
+        _gameScreen.IncreaseKilledEnemyes(enemy.Reward);
+    }        
 }
 
 [System.Serializable]
@@ -99,15 +111,17 @@ public class Wave
     public GameObject[] Tamplate;
     [SerializeField] private int _enemyesCount;
     [SerializeField] private float _delay;
+    [SerializeField] private float _currentDelay;
 
-    public float Delay
+    public float Delay => _delay;
+    public float CurrentDelay
     {
-        get => _delay;
+        get => _currentDelay;
         set
         {
-            if (value > 1)
+            if (value >= 1)
             {
-                _delay = value;
+                _currentDelay = value;
             }
         }
     }

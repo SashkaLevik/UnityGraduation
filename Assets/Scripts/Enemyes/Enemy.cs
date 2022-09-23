@@ -10,7 +10,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private int _damage;
     [SerializeField] private int _reward;
     [SerializeField] protected float _speed;
-    [SerializeField] private float _delay;
+    [SerializeField] private float _delay;   
 
     private Player _target;
     private Animator _animator;
@@ -20,12 +20,12 @@ public abstract class Enemy : MonoBehaviour
     public float Delay => _delay;
     public Player Target => _target;
 
-    public event UnityAction<Enemy> Dying;
+    public event UnityAction<Enemy> Dying;   
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
-    }
+    }    
 
     public void Init(Player target)
     {

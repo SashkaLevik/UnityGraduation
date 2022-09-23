@@ -7,9 +7,10 @@ public class MenuScreen : Panel
 {
     [SerializeField] private AudioSource _menuSound;
     [SerializeField] private AudioSource _gameSound;
-
-    private SpawnEnemyes _spawn;
-    private Player _player;
+    [SerializeField] private Player _player;
+    [SerializeField] private SpawnEnemyes _topSpawn;
+    [SerializeField] private SpawnEnemyes _middleSpawn;
+    [SerializeField] private SpawnEnemyes _bottomSpawn;
 
     private event UnityAction PlayButtonClick;
 
@@ -37,8 +38,12 @@ public class MenuScreen : Panel
         Time.timeScale = 1;
         _menuSound.Stop();
         _gameSound.Play();
-    }
-
+        _player.ResetPlayer();
+        _topSpawn.ResetWaves();
+        _middleSpawn.ResetWaves();
+        _bottomSpawn.ResetWaves();
+    }    
+    
     public void ExitGame()
     {
         Application.Quit();

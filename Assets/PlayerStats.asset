@@ -15,5 +15,5 @@ MonoBehaviour:
   _health: 5
   _damage: 1
   _defence: 3
-  _defencePower: 2
+  _defencePower: 3
   _essence: 0

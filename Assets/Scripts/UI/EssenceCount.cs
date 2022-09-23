@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class EssenceCount : MonoBehaviour
 {
-    [SerializeField] private Player _player;
     [SerializeField] private Text _essenceScore;
     [SerializeField] private UpgradeScreen _upgradeScreen;
-    [SerializeField] private PlayerStats _playerStats;
 
     private void OnEnable()
     {

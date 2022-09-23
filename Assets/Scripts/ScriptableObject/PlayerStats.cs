@@ -19,7 +19,7 @@ public class PlayerStats : ScriptableObject
         get => _defencePower;
         set
         {
-            if (value > 0)
+            if (value >= 0)
             {
                 _defencePower = value;
             }
@@ -30,7 +30,7 @@ public class PlayerStats : ScriptableObject
         get => _health;
         set
         {
-            if (value > 0)
+            if (value >= 0)
             {
                 _health = value;
             }

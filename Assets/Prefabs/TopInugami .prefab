@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7490459236081598610}
   - component: {fileID: 1224419828223051540}
   - component: {fileID: 5298161503218791650}
-  m_Layer: 9
-  m_Name: Inugami
+  m_Layer: 8
+  m_Name: 'TopInugami '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3243028c71c379f4cadd37ed8267776c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 88159545203a2584fa9ec0269399c700, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1

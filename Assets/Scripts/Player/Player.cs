@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask _bottomEnemyLayer;
     [SerializeField] private GameObject _shield;
     [SerializeField] private GameObject _hit;
-    [SerializeField] private GameObject _menuButton;
     [SerializeField] private AudioSource _topHitSound;
     [SerializeField] private AudioSource _middleHitSound;
     [SerializeField] private AudioSource _bottomHitSound;
@@ -25,7 +24,6 @@ public class Player : MonoBehaviour
     [SerializeField] private UpgradeScreen _upgradeScreen;
     [SerializeField] private PlayerStats _playerStats;
 
-    //private int _essence;
     private int _currentHealth;
     private int _currentDefence;
     private int _currentDefencePower;
@@ -40,11 +38,8 @@ public class Player : MonoBehaviour
     private const string TopHit = "TopHit";
     private const string BottomHit = "BottomHit";
 
-    //public int Health => _health;
-
     public event UnityAction<int, int> HealthChanged;
     public event UnityAction<int, int> DefencePowerChanged;
-    public event UnityAction<int> EssenceChanged;
     public event UnityAction<Player> PlayerDied;        
 
     private void Start()
@@ -53,7 +48,6 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _currentHealth = _upgradeScreen.PlayerStats.Health;
         _currentDefencePower = _upgradeScreen.PlayerStats.DefencePower;
-        _menuButton.SetActive(false);
     }
 
     private void Update()
@@ -64,23 +58,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    //public void ResetPlayer()
-    //{
-    //    _currentHealth = _health;
-    //    _currentDefencePower = _defencePower;
-    //}
-
-    //public void AddEssence(int essence)
-    //{
-    //    _upgradeScreen.PlayerStats.Essence += essence;
-    //    EssenceChanged?.Invoke(_upgradeScreen.PlayerStats.Essence);
-    //}
-
-    //public void RemoveEssence(int essence)
-    //{
-    //    _upgradeScreen.PlayerStats.Essence -= essence;
-    //    EssenceChanged?.Invoke(_upgradeScreen.PlayerStats.Essence);
-    //}
+    public void ResetPlayer()
+    {
+        _currentHealth = _playerStats.Health;
+        HealthChanged?.Invoke(_currentHealth, _playerStats.Health);
+        _currentDefencePower = _playerStats.DefencePower;
+        DefencePowerChanged?.Invoke(_currentDefencePower, _playerStats.DefencePower);
+    }    
 
     public void TakeDamage(int damage)
     {
@@ -104,27 +88,11 @@ public class Player : MonoBehaviour
                 Die();
             }
         }
-    }
-
-    //private void OnFirstUpgrade()
-    //{
-    //    int firstUpgradeCost = 1;
-
-    //    if (_essence >= 1)
-    //    {
-    //        _essence -= firstUpgradeCost;
-    //        EssenceChanged?.Invoke(_essence);
-    //        _health += 5;
-    //        HealthChanged?.Invoke(_health, _currentHealth);
-    //        _defencePower += 2;
-    //        DefencePowerChanged?.Invoke(_defencePower, _currentDefencePower);
-    //    }
-    //}
+    }    
 
     private void Die()
     {
         Time.timeScale = 0;
-        _menuButton.SetActive(true);
     }
 
     public void OnDefenceButton()
@@ -166,18 +134,18 @@ public class Player : MonoBehaviour
             hitEnemyes[i].GetComponent<Enemy>().TakeDamage(_playerStats.Damage);
         }
     }
-    private void OnTopAttacked()
+    private void OnTopAttack()
     {
         PlayerAttack(_topAttackPoint, _topEnemyLayer);
     }    
 
-    private void OnMiddleAttacked()
+    private void OnMiddleAttack()
     {
         PlayerAttack(_middleAttackPoint, _middleEnemyLayer);
     }
 
 
-    private void OnBottomAttacked()
+    private void OnBottomAttack()
     {
         PlayerAttack(_bottomAttackPoint, _bottomEnemyLayer);
     }

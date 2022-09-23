@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7490459236081598610}
   - component: {fileID: 1224419828223051540}
   - component: {fileID: 5298161503218791650}
-  m_Layer: 9
-  m_Name: Inugami
+  m_Layer: 10
+  m_Name: 'BottomInugami '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

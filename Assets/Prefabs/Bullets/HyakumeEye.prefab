@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6193998448657155793}
   - component: {fileID: 4833253922549307563}
   - component: {fileID: 8126633398102769809}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: HyakumeEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
