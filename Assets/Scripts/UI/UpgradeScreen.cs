@@ -13,7 +13,9 @@ public class UpgradeScreen : Panel
 
     private int _firstUpgradeCost = 5;
     private int _secondUpgradeCost = 10;
-    private int thirdUpgradeCost = 20;
+    private int _thirdUpgradeCost = 20;
+    private int _healthUpgrade = 5;
+    private int _defenceUpgrade = 2;
 
     public PlayerStats PlayerStats => _playerStats;
 
@@ -34,38 +36,53 @@ public class UpgradeScreen : Panel
         _thirdUpgrade.onClick.RemoveListener(OnThirdUpgrade);
     }
 
-    private void UpgradePlayer(int upgradeCost, PlayerStats playerStats)
+    //private void UpgradePlayer(int upgradeCost, PlayerStats playerStats)
+    //{
+    //    if (playerStats.Essence >= upgradeCost)
+    //    {
+    //        playerStats.Essence -= upgradeCost;
+    //        EssenceChanged?.Invoke(_playerStats.Essence);
+    //        playerStats.Health += _healthUpgrade;
+    //        playerStats.DefencePower += _defenceUpgrade;
+    //    }
+    //}
+
+    private bool TryUpgradePlayer(int upgradeCost, PlayerStats playerStats)
     {
         if (playerStats.Essence >= upgradeCost)
         {
             playerStats.Essence -= upgradeCost;
             EssenceChanged?.Invoke(_playerStats.Essence);
+            playerStats.Health += _healthUpgrade;
+            playerStats.DefencePower += _defenceUpgrade;
+            return true;
         }
+        return false;
     }
 
     private void OnFirstUpgrade()
     {
-        UpgradePlayer(_firstUpgradeCost, _playerStats);
-        _playerStats.Health += 5;
-        _playerStats.DefencePower += 2;
-        _firstUpgrade.interactable = false;
+        if (TryUpgradePlayer(_firstUpgradeCost, _playerStats))
+        {
+            _firstUpgrade.interactable = false;
+        }
     }
 
     private void OnSecondUpgrade()
     {
-        UpgradePlayer(_secondUpgradeCost, _playerStats);
-        _playerStats.Health += 5;
-        _playerStats.DefencePower += 2;
-        _secondUpgrade.interactable = false;
+        if (TryUpgradePlayer(_secondUpgradeCost, _playerStats))
+        {
+            _secondUpgrade.interactable = false;
+        }
     }
 
     private void OnThirdUpgrade()
     {
-        UpgradePlayer(thirdUpgradeCost, _playerStats);
-        _playerStats.Health += 10;
-        _playerStats.DefencePower += 4;
-        _thirdUpgrade.interactable = false;
-    }        
+        if (TryUpgradePlayer(_thirdUpgradeCost, _playerStats))
+        {
+            _thirdUpgrade.interactable = false;
+        }
+    }
 
     public void AddEssence(int essence)
     {

@@ -48,7 +48,6 @@ public class GameScreen : MonoBehaviour
 
     private void OnPlayerDied(Player player)
     {
-        _menuButton.SetActive(true);
-        
+        _menuButton.SetActive(true);                
     }
 }
