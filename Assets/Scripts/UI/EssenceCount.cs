@@ -7,19 +7,25 @@ public class EssenceCount : MonoBehaviour
 {
     [SerializeField] private Text _essenceScore;
     [SerializeField] private UpgradeScreen _upgradeScreen;
+    [SerializeField] private PlayerStats _playerStats;
 
-    private void OnEnable()
+    private void Update()
     {
-        _upgradeScreen.EssenceChanged += OnEssenceChanged;
+        _essenceScore.text = _playerStats.Essence.ToString();
     }
 
-    private void OnDisable()
-    {
-        _upgradeScreen.EssenceChanged -= OnEssenceChanged;
-    }
+    //private void OnEnable()
+    //{
+    //    _upgradeScreen.EssenceChanged += OnEssenceChanged;
+    //}
 
-    public void OnEssenceChanged(int essence)
-    {
-        _essenceScore.text = essence.ToString();
-    }
+    //private void OnDisable()
+    //{
+    //    _upgradeScreen.EssenceChanged -= OnEssenceChanged;
+    //}
+
+    //public void OnEssenceChanged(int essence)
+    //{
+    //    _essenceScore.text = essence.ToString();
+    //}
 }

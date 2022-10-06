@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class MenuScreen : Panel
 {
@@ -11,6 +12,8 @@ public class MenuScreen : Panel
     [SerializeField] private SpawnEnemyes _topSpawn;
     [SerializeField] private SpawnEnemyes _middleSpawn;
     [SerializeField] private SpawnEnemyes _bottomSpawn;
+
+    private int _sceneNumber = 0;
 
     private event UnityAction PlayButtonClick;
 
@@ -30,6 +33,7 @@ public class MenuScreen : Panel
         Time.timeScale = 0;
         _gameSound.Stop();
         _menuSound.Play();
+        SceneManager.LoadScene(_sceneNumber);
     }
 
     public override void Close(GameObject panel)

@@ -34,18 +34,7 @@ public class UpgradeScreen : Panel
         _firstUpgrade.onClick.RemoveListener(OnFirstUpgrade);
         _secondUpgrade.onClick.RemoveListener(OnSecondUpgrade);
         _thirdUpgrade.onClick.RemoveListener(OnThirdUpgrade);
-    }
-
-    //private void UpgradePlayer(int upgradeCost, PlayerStats playerStats)
-    //{
-    //    if (playerStats.Essence >= upgradeCost)
-    //    {
-    //        playerStats.Essence -= upgradeCost;
-    //        EssenceChanged?.Invoke(_playerStats.Essence);
-    //        playerStats.Health += _healthUpgrade;
-    //        playerStats.DefencePower += _defenceUpgrade;
-    //    }
-    //}
+    }    
 
     private bool TryUpgradePlayer(int upgradeCost, PlayerStats playerStats)
     {

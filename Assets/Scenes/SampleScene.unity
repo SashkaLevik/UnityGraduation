@@ -234,8 +234,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97794143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.261, y: -3, z: -1}
+  m_LocalScale: {x: 1.1313801, y: 1, z: 1}
   m_Children:
   - {fileID: 1750668120}
   m_Father: {fileID: 0}
@@ -1666,7 +1666,7 @@ GameObject:
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &430424720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1682,8 +1682,13 @@ MonoBehaviour:
   _waves:
   - Tamplate:
     - {fileID: 106225605743484519, guid: 494c8cfba85511f4e9c380021bfcfec4, type: 3}
-    _enemyesCount: 3
-    _delay: 2
+    _enemyesCount: 4
+    _delay: 4
+    _currentDelay: 0
+  - Tamplate:
+    - {fileID: 106225605743484519, guid: 494c8cfba85511f4e9c380021bfcfec4, type: 3}
+    _enemyesCount: 4
+    _delay: 4
     _currentDelay: 0
   _spawnPoint: {fileID: 430424721}
   _player: {fileID: 419626656}
@@ -1851,13 +1856,14 @@ MonoBehaviour:
   _waves:
   - Tamplate:
     - {fileID: 106225605743484519, guid: a9d56245e69ad224d85bc1e03690d0db, type: 3}
-    _enemyesCount: 1
-    _delay: 2
+    _enemyesCount: 4
+    _delay: 5
     _currentDelay: 0
   - Tamplate:
+    - {fileID: 106225605743484519, guid: a9d56245e69ad224d85bc1e03690d0db, type: 3}
     - {fileID: 5567273045860320809, guid: 234ed360554eb684db61fc328f4b41c3, type: 3}
-    _enemyesCount: 1
-    _delay: 2
+    _enemyesCount: 4
+    _delay: 4
     _currentDelay: 0
   _spawnPoint: {fileID: 469068992}
   _player: {fileID: 419626656}
@@ -2427,8 +2433,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749105104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.016, z: -0.2350983}
-  m_LocalScale: {x: 0.9462429, y: 0.5957701, z: 1}
+  m_LocalPosition: {x: -0.035, y: -0.016, z: -0.2350983}
+  m_LocalScale: {x: 1.2680533, y: 0.5957701, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -3364,6 +3370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _essenceScore: {fileID: 1273760328}
   _upgradeScreen: {fileID: 800024816}
+  _playerStats: {fileID: 11400000, guid: 8beee2eceb244d947a2b643900300979, type: 2}
 --- !u!224 &885269502
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4965,7 +4972,7 @@ Transform:
   m_GameObject: {fileID: 1839474643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 1.4, z: -8392}
-  m_LocalScale: {x: 100.20679, y: 100.518524, z: 108}
+  m_LocalScale: {x: 113.894684, y: 100.518524, z: 108}
   m_Children: []
   m_Father: {fileID: 800024812}
   m_RootOrder: 9
@@ -5275,18 +5282,18 @@ MonoBehaviour:
   _waves:
   - Tamplate:
     - {fileID: 106225605743484519, guid: 6267eeef0de7f6245af2bfcb8945672e, type: 3}
-    _enemyesCount: 1
-    _delay: 3
+    _enemyesCount: 4
+    _delay: 6
     _currentDelay: 0
   - Tamplate:
     - {fileID: 5567273045860320809, guid: bad4af5219a58fe4c8685e56d6abee7a, type: 3}
-    _enemyesCount: 1
-    _delay: 3
+    _enemyesCount: 2
+    _delay: 4
     _currentDelay: 0
   - Tamplate:
     - {fileID: 7635815799920196811, guid: 5c378327c42feab4dac6c36e78a17d33, type: 3}
     _enemyesCount: 1
-    _delay: 3
+    _delay: 2
     _currentDelay: 0
   _spawnPoint: {fileID: 1942907964}
   _player: {fileID: 419626656}
@@ -5467,8 +5474,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088354748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.22, y: -4.28, z: -0.6664031}
-  m_LocalScale: {x: 1, y: 0.42261484, z: 1}
+  m_LocalPosition: {x: 0.019, y: -4.28, z: -0.6664031}
+  m_LocalScale: {x: 1.2747161, y: 0.42261484, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12

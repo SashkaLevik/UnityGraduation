@@ -14,7 +14,6 @@ public class GameScreen : MonoBehaviour
     [SerializeField] private GameObject _menuButton;
 
     private int _enemyKilled;
-
     public event UnityAction<int> EnemyesKilled;
 
     private void Start()
@@ -48,6 +47,6 @@ public class GameScreen : MonoBehaviour
 
     private void OnPlayerDied(Player player)
     {
-        _menuButton.SetActive(true);                
+        _menuButton.SetActive(true);        
     }
 }

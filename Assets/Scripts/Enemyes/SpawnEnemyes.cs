@@ -10,10 +10,10 @@ public class SpawnEnemyes : MonoBehaviour
     [SerializeField] private UpgradeScreen _upgradeScreen;
     [SerializeField] private GameScreen _gameScreen;
     
-    private Wave _currentWave;
     private int _currentWaveNumber;
     private int _spawned;
     private float _timeAfterLastSpawn;    
+    private Wave _currentWave;
 
     private void Start()
     {
