@@ -17,7 +17,8 @@ public class SpawnEnemyes : MonoBehaviour
 
     private void Start()
     {
-        SetWave(_currentWaveNumber);        
+        SetWave(_currentWaveNumber);
+        SetDelay();
     }
 
     private void Update()
@@ -41,19 +42,17 @@ public class SpawnEnemyes : MonoBehaviour
     {
         _currentWave = _waves[waweIndex];
 
+                
+    }
+
+    private void SetDelay()
+    {
         foreach (var wave in _waves)
         {
-            wave.CurrentDelay = _currentWave.Delay;
+            wave.CurrentDelay = wave.Delay;
         }
     }
-
-    public void ResetWaves()
-    {        
-        _currentWaveNumber = 0;
-        _spawned = 0;
-        SetWave(_currentWaveNumber);
-    }
-
+    
     private void NextWave()
     {
         if (_currentWave.EnemyesCount <= _spawned && _waves.Count > _currentWaveNumber + 1)

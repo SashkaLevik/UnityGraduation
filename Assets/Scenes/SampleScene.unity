@@ -1699,7 +1699,7 @@ MonoBehaviour:
   - Tamplate:
     - {fileID: 106225605743484519, guid: 494c8cfba85511f4e9c380021bfcfec4, type: 3}
     _enemyesCount: 4
-    _delay: 4
+    _delay: 3
     _currentDelay: 0
   _spawnPoint: {fileID: 430424721}
   _player: {fileID: 419626656}
@@ -2817,9 +2817,6 @@ MonoBehaviour:
   _menuSound: {fileID: 800024815}
   _gameSound: {fileID: 800024814}
   _player: {fileID: 419626656}
-  _topSpawn: {fileID: 469068993}
-  _middleSpawn: {fileID: 1942907965}
-  _bottomSpawn: {fileID: 430424720}
 --- !u!82 &800024814
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5298,8 +5295,8 @@ MonoBehaviour:
     _currentDelay: 0
   - Tamplate:
     - {fileID: 5567273045860320809, guid: bad4af5219a58fe4c8685e56d6abee7a, type: 3}
-    _enemyesCount: 2
-    _delay: 4
+    _enemyesCount: 4
+    _delay: 5
     _currentDelay: 0
   - Tamplate:
     - {fileID: 7635815799920196811, guid: 5c378327c42feab4dac6c36e78a17d33, type: 3}
