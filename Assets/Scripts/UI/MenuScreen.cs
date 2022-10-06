@@ -43,9 +43,9 @@ public class MenuScreen : Panel
         _menuSound.Stop();
         _gameSound.Play();
         _player.ResetPlayer();
-        _topSpawn.ResetWaves();
-        _middleSpawn.ResetWaves();
-        _bottomSpawn.ResetWaves();
+        //_topSpawn.ResetWaves();
+        //_middleSpawn.ResetWaves();
+        //_bottomSpawn.ResetWaves();
     }    
     
     public void ExitGame()
