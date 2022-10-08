@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - Tamplate:
-    - {fileID: 106225605743484519, guid: 494c8cfba85511f4e9c380021bfcfec4, type: 3}
+    - {fileID: 5395386283208322890, guid: a48c23a3e42bb5749a6994f268343b6a, type: 3}
     _enemyesCount: 4
     _delay: 4
     _currentDelay: 0
@@ -1866,7 +1866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - Tamplate:
-    - {fileID: 106225605743484519, guid: a9d56245e69ad224d85bc1e03690d0db, type: 3}
+    - {fileID: 824987911209937905, guid: 45a5abc7b3155b74ea36f8442e6d9878, type: 3}
     _enemyesCount: 4
     _delay: 5
     _currentDelay: 0
@@ -5289,7 +5289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - Tamplate:
-    - {fileID: 106225605743484519, guid: 6267eeef0de7f6245af2bfcb8945672e, type: 3}
+    - {fileID: 824987911209937905, guid: d64f429d2be0a3e438dd759ca6e8b70e, type: 3}
     _enemyesCount: 4
     _delay: 6
     _currentDelay: 0
