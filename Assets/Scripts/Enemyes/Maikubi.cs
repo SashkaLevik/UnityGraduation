@@ -8,10 +8,12 @@ public class Maikubi : Enemy
     [SerializeField] private Bullet _bullet;
     [SerializeField] private AudioSource _mumbling;
 
+
+
     private void Start()
     {
         _mumbling.Play();
-        Invoke("Attack", 1f);
+        Invoke(nameof(Attack) , 1f);
     }
 
     private void Update()

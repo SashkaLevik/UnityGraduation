@@ -7,6 +7,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private int _damage;
     [SerializeField] private float _speed;
 
+    private const string EyeBullet = "EyeBullet";
+    private const string FireBullet = "FireBullet";
+
     private Player _target;
     private Animator _animator;
 
@@ -14,8 +17,8 @@ public class Bullet : MonoBehaviour
     {
         _target = FindObjectOfType<Player>();
         _animator = GetComponent<Animator>();
-        _animator.Play("EyeBullet");
-        _animator.Play("FireBullet");
+        _animator.Play(EyeBullet);
+        _animator.Play(FireBullet);
     }
 
     private void Update()

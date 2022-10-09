@@ -13,8 +13,8 @@ public class Hyakume : Enemy
     private void Start()
     {
         _roar.Play();
-        Invoke("Attack", 1f);
-        Invoke("Die", 2f);
+        Invoke(nameof(Attack), 1f);
+        Invoke(nameof(Die), 2f);
     }
     private void Update()
     {

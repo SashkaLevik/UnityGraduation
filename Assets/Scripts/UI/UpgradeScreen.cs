@@ -11,7 +11,7 @@ public class UpgradeScreen : Panel
     [SerializeField] private Button _thirdUpgrade;
     [SerializeField] private PlayerStats _playerStats;
 
-    private int _firstUpgradeCost = 30;
+    private int _firstUpgradeCost = 5;
     private int _secondUpgradeCost = 50;
     private int _thirdUpgradeCost = 100;
     private int _healthUpgrade = 5;

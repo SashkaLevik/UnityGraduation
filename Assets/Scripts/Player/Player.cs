@@ -16,13 +16,10 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask _middleEnemyLayer;
     [SerializeField] private LayerMask _bottomEnemyLayer;
     [SerializeField] private GameObject _shield;
-    [SerializeField] private GameObject _hit;
-    [SerializeField] private AudioSource _topHitSound;
-    [SerializeField] private AudioSource _middleHitSound;
-    [SerializeField] private AudioSource _bottomHitSound;
-    [SerializeField] private AudioSource _playerHit;
+    [SerializeField] private GameObject _hit;    
     [SerializeField] private UpgradeScreen _upgradeScreen;
     [SerializeField] private PlayerStats _playerStats;
+    [SerializeField] private AudioManager _audioManager;
 
     private int _currentHealth;
     private int _currentDefence;
@@ -32,11 +29,7 @@ public class Player : MonoBehaviour
     public int CurrentHealth => _currentHealth;
 
     private Rigidbody2D _rigidbody;
-    private Animator _animator;
-
-    private const string MiddleHit = "MiddleHit";
-    private const string TopHit = "TopHit";
-    private const string BottomHit = "BottomHit";
+    private Animator _animator;   
 
     public event UnityAction<int, int> HealthChanged;
     public event UnityAction<int, int> DefencePowerChanged;
@@ -78,7 +71,7 @@ public class Player : MonoBehaviour
         else
         {
             _hit.SetActive(true);
-            _playerHit.Play();
+            _audioManager.PlayerDamage.Play();
             _currentHealth -= damage;
             HealthChanged?.Invoke(_currentHealth, _upgradeScreen.PlayerStats.Health);
 
@@ -109,20 +102,20 @@ public class Player : MonoBehaviour
 
     public void OnTopAttackButton()
     {
-        _animator.SetTrigger(TopHit);
-        _topHitSound.Play();
+        _animator.SetTrigger(AnimationManager.TopHit);
+        _audioManager.TopHit.Play();
     }
 
     public void OnMiddleAttackButton()
     {
-        _animator.SetTrigger(MiddleHit);
-        _middleHitSound.Play();
+        _animator.SetTrigger(AnimationManager.MiddleHit);
+        _audioManager.MiddleHit.Play();
     }
 
     public void OnBottomAttackButton()
     {
-        _animator.SetTrigger(BottomHit);
-        _bottomHitSound.Play();
+        _animator.SetTrigger(AnimationManager.BottomHit);
+        _audioManager.BottomHit.Play();
     }
 
     private void PlayerAttack(Transform attackPoint, LayerMask enemy)

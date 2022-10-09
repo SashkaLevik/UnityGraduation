@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemyes : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<Wave> _waves;    
     [SerializeField] private Transform _spawnPoint;    
