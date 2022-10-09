@@ -13,7 +13,7 @@ public class Spirit : Enemy
 
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, _speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, Speed * Time.deltaTime);
     }
 
     protected override void Attack()

@@ -8,8 +8,6 @@ public class Maikubi : Enemy
     [SerializeField] private Bullet _bullet;
     [SerializeField] private AudioSource _mumbling;
 
-
-
     private void Start()
     {
         _mumbling.Play();
@@ -18,7 +16,7 @@ public class Maikubi : Enemy
 
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, _speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, Speed * Time.deltaTime);
     }    
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +30,8 @@ public class Maikubi : Enemy
 
     private void Shoot(Transform shootPoint)
     {
-        Instantiate(_bullet, shootPoint.position, Quaternion.identity);
+        Bullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity);
+        bullet.Init(Target);
     }
 
     protected override void Attack()

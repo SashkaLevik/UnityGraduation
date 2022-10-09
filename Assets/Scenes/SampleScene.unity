@@ -1286,7 +1286,7 @@ GameObject:
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &430424720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1448,7 +1448,7 @@ GameObject:
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &469068992
 Transform:
   m_ObjectHideFlags: 0
@@ -5336,15 +5336,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - Tamplate:
-    - {fileID: 5395386283208322890, guid: 3f032d1adcd1ec34c807a6f454c100d7, type: 3}
-    - {fileID: 824987911209937905, guid: d64f429d2be0a3e438dd759ca6e8b70e, type: 3}
-    _enemyesCount: 6
-    _delay: 6
+    - {fileID: 5567273045860320809, guid: bad4af5219a58fe4c8685e56d6abee7a, type: 3}
+    _enemyesCount: 2
+    _delay: 3
     _currentDelay: 0
   - Tamplate:
     - {fileID: 106225605743484519, guid: 6267eeef0de7f6245af2bfcb8945672e, type: 3}
     - {fileID: 5567273045860320809, guid: bad4af5219a58fe4c8685e56d6abee7a, type: 3}
-    _enemyesCount: 6
+    _enemyesCount: 2
     _delay: 5
     _currentDelay: 0
   - Tamplate:

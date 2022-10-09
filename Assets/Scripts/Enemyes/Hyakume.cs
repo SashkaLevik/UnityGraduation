@@ -31,7 +31,8 @@ public class Hyakume : Enemy
     {
         for (int i = 0; i < shootPoints.Length; i++)
         {
-            Instantiate(_bullet, shootPoints[i].position, Quaternion.identity);
+            Bullet bullet =  Instantiate(_bullet, shootPoints[i].position, Quaternion.identity);
+            bullet.Init(Target);
         }
     }
 }

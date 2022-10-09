@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private int _damage;
@@ -15,7 +16,6 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        _target = FindObjectOfType<Player>();
         _animator = GetComponent<Animator>();
         _animator.Play(EyeBullet);
         _animator.Play(FireBullet);
@@ -24,6 +24,11 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime);
+    }
+
+    public void Init(Player target)
+    {
+        _target = target;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

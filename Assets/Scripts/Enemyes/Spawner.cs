@@ -12,37 +12,48 @@ public class Spawner : MonoBehaviour
     
     private int _currentWaveNumber;
     private int _spawned;
-    private float _timeAfterLastSpawn;    
+    private float _timeAfterLastSpawn;
+    private float _timeBetweenSpawn;
     private Wave _currentWave;
 
     private void Start()
     {
         SetWave(_currentWaveNumber);
         SetDelay();
+        StartCoroutine(SpawnEnemyes());
     }
 
     private void Update()
     {
         if (_currentWave == null)
             return;
+        //_timeAfterLastSpawn += Time.deltaTime;
 
-        _timeAfterLastSpawn += Time.deltaTime;
-
-        if (_timeAfterLastSpawn >= _currentWave.CurrentDelay)
-        {
-            Spawn();
-            _spawned++;
-            _timeAfterLastSpawn = 0;
-        }
+        //if (_timeAfterLastSpawn >= _currentWave.CurrentDelay)
+        //{
+        //    Spawn();
+        //    _spawned++;
+        //    _timeAfterLastSpawn = 0;
+        //}
 
         NextWave();
     }    
 
     public void SetWave(int waweIndex)
     {
-        _currentWave = _waves[waweIndex];
+        _currentWave = _waves[waweIndex];                
+    }
 
-                
+    private IEnumerator SpawnEnemyes()
+    {
+        var timeBetweenSpawn = new WaitForSeconds(_currentWave.CurrentDelay);
+
+        while (_currentWave.CurrentDelay > 1)
+        {
+            Spawn();
+            _spawned++;
+            yield return timeBetweenSpawn;
+        }      
     }
 
     private void SetDelay()

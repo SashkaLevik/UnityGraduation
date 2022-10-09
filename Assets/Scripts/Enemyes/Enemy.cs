@@ -9,8 +9,8 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private int _health;
     [SerializeField] private int _damage;
     [SerializeField] private int _reward;
-    [SerializeField] protected float _speed;
     [SerializeField] private float _delay;   
+    [SerializeField] protected float Speed;
 
     private Player _target;
     private Animator _animator;
