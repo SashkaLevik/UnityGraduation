@@ -6,5 +6,5 @@ public class AnimationManager : MonoBehaviour
 {
     public const string MiddleHit = "MiddleHit";
     public const string TopHit = "TopHit";
-    public const string BottomHit = "BottomHit";   
+    public const string BottomHit = "BottomHit";
 }

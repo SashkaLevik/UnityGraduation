@@ -15,12 +15,7 @@ public class Hyakume : Enemy
         _roar.Play();
         Invoke(nameof(Attack), 1f);
         Invoke(nameof(Die), 2f);
-    }
-    private void Update()
-    {
-        //float targetDistance = Vector2.Distance(transform.position, Target.transform.position);
-
-    }
+    }    
 
     protected override void Attack()
     {
