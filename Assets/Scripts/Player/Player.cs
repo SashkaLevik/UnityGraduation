@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private UpgradeScreen _upgradeScreen;
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private AudioManager _audioManager;
+    [SerializeField] private HealthController _healthController;
 
     private int _currentHealth;
     private int _currentDefence;
@@ -57,7 +58,9 @@ public class Player : MonoBehaviour
         HealthChanged?.Invoke(_currentHealth, _playerStats.Health);
         _currentDefencePower = _playerStats.DefencePower;
         DefencePowerChanged?.Invoke(_currentDefencePower, _playerStats.DefencePower);
-    }    
+    }
+
+
 
     public void TakeDamage(int damage)
     {
@@ -81,7 +84,7 @@ public class Player : MonoBehaviour
                 Die();
             }
         }
-    }    
+    }
 
     private void Die()
     {

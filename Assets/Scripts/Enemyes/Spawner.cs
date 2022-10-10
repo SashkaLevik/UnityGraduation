@@ -25,8 +25,8 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if (_currentWave == null)
-            return;
+        //if (_currentWave == null)
+        //    return;
         //_timeAfterLastSpawn += Time.deltaTime;
 
         //if (_timeAfterLastSpawn >= _currentWave.CurrentDelay)
@@ -36,24 +36,12 @@ public class Spawner : MonoBehaviour
         //    _timeAfterLastSpawn = 0;
         //}
 
-        NextWave();
+        //NextWave();
     }    
 
     public void SetWave(int waweIndex)
     {
         _currentWave = _waves[waweIndex];                
-    }
-
-    private IEnumerator SpawnEnemyes()
-    {
-        var timeBetweenSpawn = new WaitForSeconds(_currentWave.CurrentDelay);
-
-        while (_currentWave.CurrentDelay > 1)
-        {
-            Spawn();
-            _spawned++;
-            yield return timeBetweenSpawn;
-        }      
     }
 
     private void SetDelay()
@@ -63,21 +51,48 @@ public class Spawner : MonoBehaviour
             wave.CurrentDelay = wave.Delay;
         }
     }
+
+    private IEnumerator SpawnEnemyes()
+    {
+        var timeBetweenSpawn = new WaitForSeconds(_currentWave.CurrentDelay);
+        
+        for (int i = _currentWave.EnemyesCount; i > 0; i--)
+        {
+            Spawn();
+            //_spawned++;
+            NextWave();
+            yield return timeBetweenSpawn;
+        }
+    }    
     
     private void NextWave()
     {
         if (_currentWave.EnemyesCount <= _spawned && _waves.Count > _currentWaveNumber + 1)
         {
+            _spawned = 0;
             SetWave(++_currentWaveNumber);
-            _spawned = 0;            
+            Spawn();
         }
 
+        //if (_currentWave.EnemyesCount <= _spawned)
+        //{
+        //    _currentWave = null;
+        //}
+        //NextLevel();
+    }     
+    
+    private void NextWave1()
+    {
+        if (_waves.Count > _currentWaveNumber +1)
+        {
+            SetWave(++_currentWaveNumber);
+            _spawned = 0;
+        }
         if (_currentWave.EnemyesCount <= _spawned)
         {
             _currentWave = null;
         }
-        NextLevel();
-    }        
+    }
 
     private void NextLevel()
     {
@@ -105,6 +120,7 @@ public class Spawner : MonoBehaviour
         Enemy enemy = Instantiate(tamplate, _spawnPoint.position, _spawnPoint.rotation, _spawnPoint).GetComponent<Enemy>();
         enemy.Init(_player);
         enemy.Dying += OnEnemyDying;
+        _spawned++;
     }
 
     private void OnEnemyDying(Enemy enemy)
