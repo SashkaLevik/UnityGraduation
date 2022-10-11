@@ -1134,6 +1134,7 @@ MonoBehaviour:
   _upgradeScreen: {fileID: 800024816}
   _playerStats: {fileID: 11400000, guid: 8beee2eceb244d947a2b643900300979, type: 2}
   _audioManager: {fileID: 966791752}
+  _healthController: {fileID: 0}
 --- !u!50 &419626657
 Rigidbody2D:
   serializedVersion: 4
@@ -5337,19 +5338,18 @@ MonoBehaviour:
   _waves:
   - Tamplate:
     - {fileID: 5567273045860320809, guid: bad4af5219a58fe4c8685e56d6abee7a, type: 3}
-    _enemyesCount: 2
+    _enemyesCount: 3
     _delay: 3
     _currentDelay: 0
   - Tamplate:
     - {fileID: 106225605743484519, guid: 6267eeef0de7f6245af2bfcb8945672e, type: 3}
-    - {fileID: 5567273045860320809, guid: bad4af5219a58fe4c8685e56d6abee7a, type: 3}
-    _enemyesCount: 2
-    _delay: 5
+    _enemyesCount: 3
+    _delay: 4
     _currentDelay: 0
   - Tamplate:
     - {fileID: 7635815799920196811, guid: 5c378327c42feab4dac6c36e78a17d33, type: 3}
     _enemyesCount: 1
-    _delay: 2
+    _delay: 3
     _currentDelay: 0
   _spawnPoint: {fileID: 1942907964}
   _player: {fileID: 419626656}

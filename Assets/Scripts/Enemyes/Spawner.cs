@@ -21,25 +21,9 @@ public class Spawner : MonoBehaviour
         SetWave(_currentWaveNumber);
         SetDelay();
         StartCoroutine(SpawnEnemyes());
-    }
+    }        
 
-    private void Update()
-    {
-        //if (_currentWave == null)
-        //    return;
-        //_timeAfterLastSpawn += Time.deltaTime;
-
-        //if (_timeAfterLastSpawn >= _currentWave.CurrentDelay)
-        //{
-        //    Spawn();
-        //    _spawned++;
-        //    _timeAfterLastSpawn = 0;
-        //}
-
-        //NextWave();
-    }    
-
-    public void SetWave(int waweIndex)
+    private void SetWave(int waweIndex)
     {
         _currentWave = _waves[waweIndex];                
     }
@@ -56,12 +40,17 @@ public class Spawner : MonoBehaviour
     {
         var timeBetweenSpawn = new WaitForSeconds(_currentWave.CurrentDelay);
         
-        for (int i = _currentWave.EnemyesCount; i > 0; i--)
+        for (int i = 0; i < _waves.Count; i++)
         {
-            Spawn();
-            //_spawned++;
-            NextWave();
-            yield return timeBetweenSpawn;
+            for (int j = _currentWave.EnemyesCount; j > 0; j--)
+            {                
+                for (float k = _currentWave.CurrentDelay; k > 1; k--)
+                {
+                    Spawn();
+                    NextWave();
+                    yield return timeBetweenSpawn;
+                }
+            }
         }
     }    
     
@@ -71,28 +60,14 @@ public class Spawner : MonoBehaviour
         {
             _spawned = 0;
             SetWave(++_currentWaveNumber);
-            Spawn();
         }
 
-        //if (_currentWave.EnemyesCount <= _spawned)
-        //{
-        //    _currentWave = null;
-        //}
-        //NextLevel();
-    }     
-    
-    private void NextWave1()
-    {
-        if (_waves.Count > _currentWaveNumber +1)
-        {
-            SetWave(++_currentWaveNumber);
-            _spawned = 0;
-        }
         if (_currentWave.EnemyesCount <= _spawned)
         {
             _currentWave = null;
         }
-    }
+        NextLevel();
+    }             
 
     private void NextLevel()
     {
