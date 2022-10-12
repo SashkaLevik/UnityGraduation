@@ -9,6 +9,10 @@ public class MenuScreen : Panel
     [SerializeField] private AudioSource _menuSound;
     [SerializeField] private AudioSource _gameSound;
     [SerializeField] private Player _player;
+    [SerializeField] private Spawner _topSpawner;
+    [SerializeField] private Spawner _middleSpawner;
+    [SerializeField] private Spawner _bottomSpawner;
+
 
     private int _sceneNumber = 0;
 
@@ -40,6 +44,9 @@ public class MenuScreen : Panel
         _menuSound.Stop();
         _gameSound.Play();
         _player.ResetPlayer();
+        _topSpawner.StartSpawn();
+        _middleSpawner.StartSpawn();
+        _bottomSpawner.StartSpawn();
     }    
     
     public void ExitGame()
