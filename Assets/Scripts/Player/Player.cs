@@ -20,14 +20,11 @@ public class Player : MonoBehaviour
     [SerializeField] private UpgradeScreen _upgradeScreen;
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private AudioManager _audioManager;
-    [SerializeField] private HealthController _healthController;
+    [SerializeField] private Health _health;
 
-    private int _currentHealth;
     private int _currentDefence;
     private int _currentDefencePower;
     private bool _isDefending = false;
-
-    public int CurrentHealth => _currentHealth;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;   
@@ -40,7 +37,6 @@ public class Player : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _currentHealth = _upgradeScreen.PlayerStats.Health;
         _currentDefencePower = _upgradeScreen.PlayerStats.DefencePower;
     }
 
@@ -54,13 +50,11 @@ public class Player : MonoBehaviour
 
     public void ResetPlayer()
     {
-        _currentHealth = _playerStats.Health;
-        HealthChanged?.Invoke(_currentHealth, _playerStats.Health);
+        _health.CurrentHealth = _playerStats.Health;
+        HealthChanged?.Invoke(_health.CurrentHealth, _playerStats.Health);
         _currentDefencePower = _playerStats.DefencePower;
         DefencePowerChanged?.Invoke(_currentDefencePower, _playerStats.DefencePower);
     }
-
-
 
     public void TakeDamage(int damage)
     {
@@ -75,10 +69,10 @@ public class Player : MonoBehaviour
         {
             _hit.SetActive(true);
             _audioManager.PlayerDamage.Play();
-            _currentHealth -= damage;
-            HealthChanged?.Invoke(_currentHealth, _upgradeScreen.PlayerStats.Health);
+            _health.CurrentHealth -= damage;
+            HealthChanged?.Invoke(_health.CurrentHealth, _upgradeScreen.PlayerStats.Health);
 
-            if (_currentHealth <= 0)
+            if (_health.CurrentHealth <= 0)
             {
                 PlayerDied?.Invoke(this);
                 Die();
@@ -130,6 +124,7 @@ public class Player : MonoBehaviour
             hitEnemyes[i].GetComponent<Enemy>().TakeDamage(_playerStats.Damage);
         }
     }
+
     private void OnTopAttack()
     {
         PlayerAttack(_topAttackPoint, _topEnemyLayer);
@@ -139,7 +134,6 @@ public class Player : MonoBehaviour
     {
         PlayerAttack(_middleAttackPoint, _middleEnemyLayer);
     }
-
 
     private void OnBottomAttack()
     {

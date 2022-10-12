@@ -20,7 +20,6 @@ public class Spawner : MonoBehaviour
     {
         SetWave(_currentWaveNumber);
         SetDelay();
-        //StartCoroutine(SpawnEnemyes());
     }        
 
     public void StartSpawn()
