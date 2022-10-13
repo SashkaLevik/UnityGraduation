@@ -5,15 +5,16 @@ using UnityEngine;
 public class HealthBar : Bar
 {
     [SerializeField] private Player _player;
+    [SerializeField] private Health _health;
 
     private void OnEnable()
     {
-        _player.HealthChanged += OnValueChanged;
+        _health.HealthChanged += OnValueChanged;
         Slider.value = 1;
     }
 
     private void OnDisable()
     {
-        _player.HealthChanged -= OnValueChanged;
+        _health.HealthChanged -= OnValueChanged;
     }
 }

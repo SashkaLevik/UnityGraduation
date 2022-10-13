@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask _middleEnemyLayer;
     [SerializeField] private LayerMask _bottomEnemyLayer;
     [SerializeField] private GameObject _shield;
-    [SerializeField] private GameObject _hit;    
     [SerializeField] private UpgradeScreen _upgradeScreen;
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private AudioManager _audioManager;
@@ -29,9 +28,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator;   
 
-    public event UnityAction<int, int> HealthChanged;
     public event UnityAction<int, int> DefencePowerChanged;
-    public event UnityAction<Player> PlayerDied;        
 
     private void Start()
     {
@@ -50,8 +47,7 @@ public class Player : MonoBehaviour
 
     public void ResetPlayer()
     {
-        _health.CurrentHealth = _playerStats.Health;
-        HealthChanged?.Invoke(_health.CurrentHealth, _playerStats.Health);
+        _health.ResetHealth();
         _currentDefencePower = _playerStats.DefencePower;
         DefencePowerChanged?.Invoke(_currentDefencePower, _playerStats.DefencePower);
     }
@@ -66,24 +62,10 @@ public class Player : MonoBehaviour
                 _isDefending = false;
         }
         else
-        {
-            _hit.SetActive(true);
-            _audioManager.PlayerDamage.Play();
-            _health.CurrentHealth -= damage;
-            HealthChanged?.Invoke(_health.CurrentHealth, _upgradeScreen.PlayerStats.Health);
-
-            if (_health.CurrentHealth <= 0)
-            {
-                PlayerDied?.Invoke(this);
-                Die();
-            }
+        {            
+            _health.TakeDamage(damage);
         }
-    }
-
-    private void Die()
-    {
-        Time.timeScale = 0;
-    }
+    }    
 
     public void OnDefenceButton()
     {
