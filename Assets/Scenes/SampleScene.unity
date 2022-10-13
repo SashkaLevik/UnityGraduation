@@ -1130,7 +1130,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   _shield: {fileID: 448853505}
-  _hit: {fileID: 1453862530}
   _upgradeScreen: {fileID: 800024816}
   _playerStats: {fileID: 11400000, guid: 8beee2eceb244d947a2b643900300979, type: 2}
   _audioManager: {fileID: 966791752}
@@ -2661,6 +2660,7 @@ MonoBehaviour:
   _defenceButton: {fileID: 1633148988}
   _player: {fileID: 419626656}
   _menuButton: {fileID: 823359186}
+  _health: {fileID: 990531019}
 --- !u!1 &818806563
 GameObject:
   m_ObjectHideFlags: 0
@@ -3640,7 +3640,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeScreen: {fileID: 800024816}
-  _playerStats: {fileID: 11400000, guid: 8beee2eceb244d947a2b643900300979, type: 2}
+  _hit: {fileID: 1453862530}
+  _audioManager: {fileID: 966791752}
+  _player: {fileID: 419626656}
 --- !u!4 &990531020
 Transform:
   m_ObjectHideFlags: 0
@@ -3708,6 +3710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slider: {fileID: 1027563512}
   _player: {fileID: 419626656}
+  _health: {fileID: 990531019}
 --- !u!114 &1027563512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5387,12 +5390,12 @@ MonoBehaviour:
   _waves:
   - Tamplate:
     - {fileID: 5567273045860320809, guid: bad4af5219a58fe4c8685e56d6abee7a, type: 3}
-    _enemyesCount: 3
+    _enemyesCount: 2
     _delay: 6
     _currentDelay: 0
   - Tamplate:
     - {fileID: 106225605743484519, guid: 6267eeef0de7f6245af2bfcb8945672e, type: 3}
-    _enemyesCount: 3
+    _enemyesCount: 2
     _delay: 7
     _currentDelay: 0
   - Tamplate:
