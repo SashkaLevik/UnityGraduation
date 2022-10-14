@@ -7,19 +7,12 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
-{    
-    [SerializeField] private float _attackRange;
-    [SerializeField] private Transform _topAttackPoint;
-    [SerializeField] private Transform _middleAttackPoint;
-    [SerializeField] private Transform _bottomAttackPoint;
-    [SerializeField] private LayerMask _topEnemyLayer;
-    [SerializeField] private LayerMask _middleEnemyLayer;
-    [SerializeField] private LayerMask _bottomEnemyLayer;
+{        
+    [SerializeField] private AudioManager _audioManager;
     [SerializeField] private GameObject _shield;
     [SerializeField] private UpgradeScreen _upgradeScreen;
-    [SerializeField] private PlayerStats _playerStats;
-    [SerializeField] private AudioManager _audioManager;
     [SerializeField] private Health _health;
+    [SerializeField] private Attacker _attacker;
 
     private int _currentDefence;
     private int _currentDefencePower;
@@ -48,8 +41,8 @@ public class Player : MonoBehaviour
     public void ResetPlayer()
     {
         _health.ResetHealth();
-        _currentDefencePower = _playerStats.DefencePower;
-        DefencePowerChanged?.Invoke(_currentDefencePower, _playerStats.DefencePower);
+        _currentDefencePower = _upgradeScreen.PlayerStats.DefencePower;
+        DefencePowerChanged?.Invoke(_currentDefencePower, _upgradeScreen.PlayerStats.DefencePower);
     }
 
     public void TakeDamage(int damage)
@@ -95,37 +88,5 @@ public class Player : MonoBehaviour
     {
         _animator.SetTrigger(AnimationManager.BottomHit);
         _audioManager.BottomHit.Play();
-    }
-
-    private void PlayerAttack(Transform attackPoint, LayerMask enemy)
-    {
-        Collider2D[] hitEnemyes = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, enemy);
-
-        for (int i = 0; i < hitEnemyes.Length; i++)
-        {
-            hitEnemyes[i].GetComponent<Enemy>().TakeDamage(_playerStats.Damage);
-        }
-    }
-
-    private void OnTopAttack()
-    {
-        PlayerAttack(_topAttackPoint, _topEnemyLayer);
     }    
-
-    private void OnMiddleAttack()
-    {
-        PlayerAttack(_middleAttackPoint, _middleEnemyLayer);
-    }
-
-    private void OnBottomAttack()
-    {
-        PlayerAttack(_bottomAttackPoint, _bottomEnemyLayer);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_topAttackPoint.position, _attackRange);
-    }
-
 }

@@ -1097,6 +1097,7 @@ GameObject:
   - component: {fileID: 419626658}
   - component: {fileID: 419626657}
   - component: {fileID: 419626656}
+  - component: {fileID: 419626662}
   m_Layer: 0
   m_Name: PlayerBlack
   m_TagString: Untagged
@@ -1116,24 +1117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1787a0673c3db43868c79e1d28e660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRange: 0.2
-  _topAttackPoint: {fileID: 818806564}
-  _middleAttackPoint: {fileID: 1134707198}
-  _bottomAttackPoint: {fileID: 2094115244}
-  _topEnemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  _middleEnemyLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  _bottomEnemyLayer:
-    serializedVersion: 2
-    m_Bits: 1024
+  _audioManager: {fileID: 966791752}
   _shield: {fileID: 448853505}
   _upgradeScreen: {fileID: 800024816}
-  _playerStats: {fileID: 11400000, guid: 8beee2eceb244d947a2b643900300979, type: 2}
-  _audioManager: {fileID: 966791752}
   _health: {fileID: 990531019}
+  _attacker: {fileID: 1039203421}
 --- !u!50 &419626657
 Rigidbody2D:
   serializedVersion: 4
@@ -1271,6 +1259,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &419626662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419626655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dff50447be988419e1ff72d87d2a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 0.2
+  _player: {fileID: 419626656}
+  _topAttackPoint: {fileID: 818806564}
+  _middleAttackPoint: {fileID: 1134707198}
+  _bottomAttackPoint: {fileID: 2094115244}
+  _topEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _middleEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _bottomEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  _audioManager: {fileID: 966791752}
+  _upgradeScreen: {fileID: 800024816}
 --- !u!1 &430424719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,6 +3777,85 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1039203420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1039203423}
+  - component: {fileID: 1039203422}
+  - component: {fileID: 1039203421}
+  m_Layer: 0
+  m_Name: Attacker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1039203421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039203420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dff50447be988419e1ff72d87d2a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 0.2
+  _player: {fileID: 419626656}
+  _topAttackPoint: {fileID: 818806564}
+  _middleAttackPoint: {fileID: 1134707198}
+  _bottomAttackPoint: {fileID: 2094115244}
+  _topEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _middleEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _bottomEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  _audioManager: {fileID: 966791752}
+  _upgradeScreen: {fileID: 800024816}
+--- !u!95 &1039203422
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039203420}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6784b88e6aad1674f87cb55fa4f6aab5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &1039203423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039203420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.82341546, y: -0.10727862, z: -4.7177286}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1134707197
 GameObject:
   m_ObjectHideFlags: 0
