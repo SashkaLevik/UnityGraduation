@@ -13,7 +13,6 @@ public class MenuScreen : Panel
     [SerializeField] private Spawner _middleSpawner;
     [SerializeField] private Spawner _bottomSpawner;
 
-
     private int _sceneNumber = 0;
 
     private event UnityAction PlayButtonClick;
@@ -43,7 +42,7 @@ public class MenuScreen : Panel
         Time.timeScale = 1;
         _menuSound.Stop();
         _gameSound.Play();
-        _player.ResetPlayer();
+        _player.Reset();
         _topSpawner.StartSpawn();
         _middleSpawner.StartSpawn();
         _bottomSpawner.StartSpawn();

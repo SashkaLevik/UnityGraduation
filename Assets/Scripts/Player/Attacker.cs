@@ -6,22 +6,13 @@ using UnityEngine;
 public class Attacker : MonoBehaviour
 {
     [SerializeField] private float _attackRange;
-    [SerializeField] private Player _player;
     [SerializeField] private Transform _topAttackPoint;
     [SerializeField] private Transform _middleAttackPoint;
     [SerializeField] private Transform _bottomAttackPoint;
     [SerializeField] private LayerMask _topEnemyLayer;
     [SerializeField] private LayerMask _middleEnemyLayer;
     [SerializeField] private LayerMask _bottomEnemyLayer;
-    [SerializeField] private AudioManager _audioManager;
-    [SerializeField] private UpgradeScreen _upgradeScreen;
-
-    private Animator _animator;
-
-    private void Start()
-    {
-        _animator = GetComponent<Animator>();
-    }    
+    [SerializeField] private UpgradeScreen _upgradeScreen;      
 
     private void PlayerAttack(Transform attackPoint, LayerMask enemy)
     {

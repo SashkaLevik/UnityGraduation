@@ -12,8 +12,6 @@ public class Spawner : MonoBehaviour
     
     private int _currentWaveNumber;
     private int _spawned;
-    private float _timeAfterLastSpawn;
-    private float _timeBetweenSpawn;
     private Wave _currentWave;
 
     private void Start()
@@ -113,10 +111,11 @@ public class Spawner : MonoBehaviour
 [System.Serializable]
 public class Wave
 {
-    public GameObject[] Tamplate;
     [SerializeField] private int _enemyesCount;
     [SerializeField] private float _delay;
     [SerializeField] private float _currentDelay;
+
+    public GameObject[] Tamplate;
 
     public float Delay => _delay;
     public float CurrentDelay

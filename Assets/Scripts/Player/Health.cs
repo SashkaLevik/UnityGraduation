@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         _currentHealth = _upgradeScreen.PlayerStats.Health;
     }
 
-    public void ResetHealth()
+    public void Reset()
     {
         _currentHealth = _upgradeScreen.PlayerStats.Health;
         HealthChanged?.Invoke(_currentHealth, _upgradeScreen.PlayerStats.Health);

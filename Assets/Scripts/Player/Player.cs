@@ -38,9 +38,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ResetPlayer()
+    public void Reset()
     {
-        _health.ResetHealth();
+        _health.Reset();
         _currentDefencePower = _upgradeScreen.PlayerStats.DefencePower;
         DefencePowerChanged?.Invoke(_currentDefencePower, _upgradeScreen.PlayerStats.DefencePower);
     }

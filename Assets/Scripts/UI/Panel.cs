@@ -20,6 +20,7 @@ public abstract class Panel : MonoBehaviour
     protected abstract void OnButtonClick();
 
     public abstract void Open(GameObject panel);
+
     public abstract void Close(GameObject panel);
 
 }

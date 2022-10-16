@@ -15,6 +15,7 @@ public class GameScreen : MonoBehaviour
     [SerializeField] private Health _health;
 
     private int _enemyKilled;
+
     public event UnityAction<int> EnemyesKilled;
 
     private void Start()
