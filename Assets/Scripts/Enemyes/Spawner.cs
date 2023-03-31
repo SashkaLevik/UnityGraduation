@@ -44,15 +44,16 @@ public class Spawner : MonoBehaviour
         
         for (int i = 0; i < _waves.Count; i++)
         {
-            for (int j = _currentWave.EnemyesCount; j > 0; j--)
-            {                
-                for (float k = _currentWave.CurrentDelay; k > 1; k--)
+            for (float k = _currentWave.CurrentDelay; k > 1; k--)
+            {
+                for (int j = _currentWave.EnemyesCount; j > 0; j--)
                 {
-                    Spawn();
+                    Invoke(nameof(Spawn), _waves[0].FirstSpawnDelay);
                     NextWave();
                     yield return timeBetweenSpawn;
                 }
             }
+            
         }
     }    
     
@@ -66,7 +67,7 @@ public class Spawner : MonoBehaviour
 
         if (_currentWave.EnemyesCount <= _spawned)
         {
-            _currentWave = null;
+             _currentWave = null;
         }
         NextLevel();
     }             
@@ -88,11 +89,30 @@ public class Spawner : MonoBehaviour
                 else
                     _currentWave = null;
             }
-        }        
+        }
     }
 
-    private void Spawn()
+    private void NextLevel2()
     {
+        if (_currentWave == null)
+        {
+            _currentWaveNumber = -1;
+            SetWave(++_currentWaveNumber);
+            _spawned = 0;
+
+            foreach (var wave in _waves)
+            {
+                if (wave.CurrentDelay >= 1)
+                {
+                    wave.CurrentDelay--;
+                }
+                else
+                    _currentWave = null;
+            }
+        }
+    }
+    private void Spawn()
+    {        
         GameObject tamplate = _currentWave.Tamplate[Random.Range(0, _currentWave.Tamplate.Length)];
         Enemy enemy = Instantiate(tamplate, _spawnPoint.position, _spawnPoint.rotation, _spawnPoint).GetComponent<Enemy>();
         enemy.Init(_player);
@@ -111,12 +131,13 @@ public class Spawner : MonoBehaviour
 [System.Serializable]
 public class Wave
 {
+    [SerializeField] private float _firstSpawnDelay;
     [SerializeField] private int _enemyesCount;
     [SerializeField] private float _delay;
     [SerializeField] private float _currentDelay;
 
     public GameObject[] Tamplate;
-
+    public float FirstSpawnDelay => _firstSpawnDelay;
     public float Delay => _delay;
     public float CurrentDelay
     {

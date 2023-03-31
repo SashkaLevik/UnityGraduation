@@ -992,8 +992,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -8800}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1486077928}
+  m_Children: []
   m_Father: {fileID: 800024812}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1271,8 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4dff50447be988419e1ff72d87d2a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRange: 0.2
-  _player: {fileID: 419626656}
+  _attackRange: 0.5
   _topAttackPoint: {fileID: 818806564}
   _middleAttackPoint: {fileID: 1134707198}
   _bottomAttackPoint: {fileID: 2094115244}
@@ -1285,7 +1283,6 @@ MonoBehaviour:
   _bottomEnemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  _audioManager: {fileID: 966791752}
   _upgradeScreen: {fileID: 800024816}
 --- !u!1 &430424719
 GameObject:
@@ -1317,18 +1314,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
-  - Tamplate:
+  - _firstSpawnDelay: 4
+    _enemyesCount: 6
+    _delay: 9
+    _currentDelay: 0
+    Tamplate:
     - {fileID: 5395386283208322890, guid: a48c23a3e42bb5749a6994f268343b6a, type: 3}
     - {fileID: 106225605743484519, guid: 494c8cfba85511f4e9c380021bfcfec4, type: 3}
+  - _firstSpawnDelay: 0
     _enemyesCount: 6
-    _delay: 4
+    _delay: 9
     _currentDelay: 0
-  - Tamplate:
+    Tamplate:
     - {fileID: 106225605743484519, guid: 494c8cfba85511f4e9c380021bfcfec4, type: 3}
     - {fileID: 5395386283208322890, guid: a48c23a3e42bb5749a6994f268343b6a, type: 3}
-    _enemyesCount: 6
-    _delay: 6
-    _currentDelay: 0
   _spawnPoint: {fileID: 430424721}
   _player: {fileID: 419626656}
   _upgradeScreen: {fileID: 800024816}
@@ -1493,18 +1492,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
-  - Tamplate:
-    - {fileID: 824987911209937905, guid: 45a5abc7b3155b74ea36f8442e6d9878, type: 3}
-    - {fileID: 106225605743484519, guid: a9d56245e69ad224d85bc1e03690d0db, type: 3}
-    _enemyesCount: 6
-    _delay: 5
-    _currentDelay: 0
-  - Tamplate:
-    - {fileID: 5395386283208322890, guid: 3c0e4b260aa78ce459637ee5038f85ac, type: 3}
-    - {fileID: 5567273045860320809, guid: 234ed360554eb684db61fc328f4b41c3, type: 3}
+  - _firstSpawnDelay: 3
     _enemyesCount: 6
     _delay: 6
     _currentDelay: 0
+    Tamplate:
+    - {fileID: 824987911209937905, guid: 45a5abc7b3155b74ea36f8442e6d9878, type: 3}
+    - {fileID: 106225605743484519, guid: a9d56245e69ad224d85bc1e03690d0db, type: 3}
+  - _firstSpawnDelay: 0
+    _enemyesCount: 6
+    _delay: 6
+    _currentDelay: 0
+    Tamplate:
+    - {fileID: 5395386283208322890, guid: 3c0e4b260aa78ce459637ee5038f85ac, type: 3}
+    - {fileID: 824987911209937905, guid: 45a5abc7b3155b74ea36f8442e6d9878, type: 3}
+  - _firstSpawnDelay: 0
+    _enemyesCount: 6
+    _delay: 6
+    _currentDelay: 0
+    Tamplate:
+    - {fileID: 5395386283208322890, guid: 3c0e4b260aa78ce459637ee5038f85ac, type: 3}
+    - {fileID: 5567273045860320809, guid: 234ed360554eb684db61fc328f4b41c3, type: 3}
   _spawnPoint: {fileID: 469068992}
   _player: {fileID: 419626656}
   _upgradeScreen: {fileID: 800024816}
@@ -3807,8 +3815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4dff50447be988419e1ff72d87d2a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRange: 0.2
-  _player: {fileID: 419626656}
+  _attackRange: 0.5
   _topAttackPoint: {fileID: 818806564}
   _middleAttackPoint: {fileID: 1134707198}
   _bottomAttackPoint: {fileID: 2094115244}
@@ -3821,7 +3828,6 @@ MonoBehaviour:
   _bottomEnemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  _audioManager: {fileID: 966791752}
   _upgradeScreen: {fileID: 800024816}
 --- !u!95 &1039203422
 Animator:
@@ -4545,84 +4551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e70d74e5b8e8a418003bbbfd1d4a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1486077927
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1486077928}
-  - component: {fileID: 1486077930}
-  - component: {fileID: 1486077929}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1486077928
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486077927}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 404103616}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1486077929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486077927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Button
---- !u!222 &1486077930
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486077927}
-  m_CullTransparentMesh: 0
 --- !u!1 &1550457616
 GameObject:
   m_ObjectHideFlags: 0
@@ -5483,21 +5411,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
-  - Tamplate:
-    - {fileID: 5567273045860320809, guid: bad4af5219a58fe4c8685e56d6abee7a, type: 3}
-    _enemyesCount: 2
-    _delay: 6
-    _currentDelay: 0
-  - Tamplate:
-    - {fileID: 106225605743484519, guid: 6267eeef0de7f6245af2bfcb8945672e, type: 3}
+  - _firstSpawnDelay: 2
     _enemyesCount: 2
     _delay: 7
     _currentDelay: 0
-  - Tamplate:
-    - {fileID: 7635815799920196811, guid: 5c378327c42feab4dac6c36e78a17d33, type: 3}
+    Tamplate:
+    - {fileID: 5395386283208322890, guid: 3f032d1adcd1ec34c807a6f454c100d7, type: 3}
+    - {fileID: 5395386283208322890, guid: 3f032d1adcd1ec34c807a6f454c100d7, type: 3}
+  - _firstSpawnDelay: 0
     _enemyesCount: 1
-    _delay: 3
+    _delay: 7
     _currentDelay: 0
+    Tamplate:
+    - {fileID: 106225605743484519, guid: 6267eeef0de7f6245af2bfcb8945672e, type: 3}
+    - {fileID: 106225605743484519, guid: 6267eeef0de7f6245af2bfcb8945672e, type: 3}
+  - _firstSpawnDelay: 0
+    _enemyesCount: 1
+    _delay: 7
+    _currentDelay: 0
+    Tamplate:
+    - {fileID: 7635815799920196811, guid: 5c378327c42feab4dac6c36e78a17d33, type: 3}
   _spawnPoint: {fileID: 1942907964}
   _player: {fileID: 419626656}
   _upgradeScreen: {fileID: 800024816}
